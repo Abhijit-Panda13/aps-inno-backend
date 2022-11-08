@@ -6,20 +6,8 @@ const cors = require('cors') // includes cors module
 
 require('dotenv').config()
 
-const corsOpts = {
-  origin: '*',
-
-  methods: [
-    'GET',
-    'POST',
-  ],
-
-  allowedHeaders: [
-    'Content-Type',
-  ],
-};
-
-app.use(cors(corsOpts)) // We're telling express to use CORS
+app.use(cors()) // We're telling express to use CORS
+app.options('*', cors());
 app.use(express.json()) // we need to tell server to use json as well
 app.use(routes) // tells the server to use the routes in routes.js
 
